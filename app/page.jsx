@@ -150,7 +150,7 @@ export default function Home() {
 
 
   const heading =
-    [(<h2 className="text-center" style={{ font: 'Roboto', color: '#101213', fontSize: '36px', fontWeight: '600', textAlign: 'center' }}> DALL-E 2 Image Mask Editors </h2>),
+    [(<h2 className="text-center" style={{ font: 'Roboto', color: '#101213', fontSize: '36px', fontWeight: '600', textAlign: 'center' }}>AI Schrodinger's Cat Generator</h2>),
     (<p hidden={!originalImage.length} className="text-center">2. Use mouse to erase parts of the photo that should be edited by AI</p>),
     (<p hidden={!originalImage.length} className="text-center">  3. Send to  OpenAI</p>),
     (<p hidden={!originalImage.length} className="text-center">  4. Download Images</p>)];
