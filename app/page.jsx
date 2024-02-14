@@ -116,7 +116,7 @@ export default function Home() {
 
 
     setpercent(30)
-    const res = await fetch("/api/submit", {
+    const res = await fetch("/api/imageEdit", {
       method: "POST",
       //cache: 'no-store',
       body: JSON.stringify({ content }),
