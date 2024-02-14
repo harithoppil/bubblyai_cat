@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+//import Image from "next/image";
 
 
 import { React, useEffect, useState, useRef } from "react";
@@ -163,7 +163,7 @@ export default function Home() {
   const imageRenderCanvas = (
     <div hidden={!originalImage.length} style={{ width: '100%', margin: "10", height: '100%', minwidth: '1400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <canvas hidden={modImage} ref={canvasRef} className="border border-white" ></canvas>
-      <Image hidden={!modImage} src={urlImage} alt="Cat Image" />
+      <img hidden={!modImage} src={urlImage} alt="Cat Image" />
 
     </div>);
 

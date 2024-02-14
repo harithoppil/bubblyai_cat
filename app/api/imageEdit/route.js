@@ -6,6 +6,7 @@ import { existsSync, mkdirSync, createReadStream } from "node:fs";
 
 const openai = new OpenAI({
   apiKey: "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",
+  //apiKey: "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",
 });
 
 export async function POST(req, res) {
