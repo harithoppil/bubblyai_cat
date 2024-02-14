@@ -4,16 +4,15 @@ import OpenAI from "openai";
 import { outputFile } from "image-data-uri";
 import { existsSync, mkdirSync, createReadStream } from "node:fs";
 
-const openai = new OpenAI({
-  apiKey: "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",
-  //apiKey: "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",
-});
-
 export async function POST(req, res) {
   const { content } = await req.json();
   const image1Base64 = content[0].image1;
   const image2Base64 = content[1].image2;
-
+  const openaiApiKey = content[2].openaiKey;
+  const openai = new OpenAI({
+    apiKey: openaiApiKey,
+  });
+  //apiKey: "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",
   //const buffer1 = Buffer.from(imageData1, "base64");
   //code for buffers if necesaary in future
 
@@ -53,7 +52,7 @@ export async function POST(req, res) {
     model: "dall-e-2",
     prompt: "An Image with a striped red cat",
     n: 1,
-    size: "1024x1024",
+    size: "256x256",
   });
   //response_format: "b64_json", // ---USE FOR Base64 openai
 

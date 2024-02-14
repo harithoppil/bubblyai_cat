@@ -10,6 +10,7 @@ export default function Home() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [modImage, setmodImage] = useState(false);
   const [urlImage, seturlImage] = useState('');
+  const [openApiKey, setopenApikey] = useState('');
   const [loading, setloading] = useState(false)
   const [percent, setpercent] = useState(0)
   const canvasRef = useRef(null);
@@ -101,7 +102,14 @@ export default function Home() {
 
     return dataImgBase64;
   }
+  const handleKey = () => {
+    let inputElement = document.getElementById('apiKeyInput');
+    setopenApikey(inputElement.value);
+
+    console.log(inputElement.value)
+  };
   const handleOpenAI = async () => {
+    console.log("openApiKey", openApiKey)
     setloading(true)
     setpercent(25)
     const canvas = canvasRef.current;
@@ -110,7 +118,11 @@ export default function Home() {
     formData.append('image1', originalImage);
     formData.append('image2', editedImage);
 
-    const content = [{ image1: originalImage }, { image2: editedImage }]
+    const customapikey = apiKey == 1 ? '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' : apiKey;
+
+
+
+    const content = [{ image1: originalImage }, { image2: editedImage }, { openaiKey: customapikey }]
     abortControllerRef.current = new AbortController();
 
 
@@ -184,6 +196,12 @@ export default function Home() {
     <div hidden={!originalImage.length} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <button disabled={!originalImage.length} type="button" className="btn m-2 btn-outline-primary" onClick={() => downloadOriginal("Original")}>Download Original</button>
       <button disabled={!originalImage.length} type="button" className="btn m-2 btn-outline-primary" onClick={() => downloadMask("Mask")}>Download Mask</button></div>);
+  const apiKeyField = (
+    <div hidden={openApiKey.length} className="input-group mb-3">
+      <button className="btn btn-outline-secondary" type="button" id="button-addon1" onClick={handleKey}>Submit Key</button>
+      <input id="apiKeyInput" type="password" className="form-control" placeholder="Enter your OpenAI API Key" aria-label="openai apikey" aria-describedby="button-addon1" />
+    </div>
+  );
 
 
   return (
@@ -193,6 +211,8 @@ export default function Home() {
         {heading[0]}
         <br />
         {imageSelector}
+        <br />
+        {apiKeyField}
         {heading[1]}
         {imageRenderCanvas}
         { }
