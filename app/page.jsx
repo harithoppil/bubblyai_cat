@@ -118,13 +118,11 @@ export default function Home() {
     formData.append('image1', originalImage);
     formData.append('image2', editedImage);
 
-
-    if (openApiKey == 1) {
-      var customapikey = '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'
+    if (openApiKey.length == 0) {
+      console.error("you gotta type a valid key for this to work!")
     }
-    else { var customapikey = openApiKey; }
 
-    const content = [{ image1: originalImage }, { image2: editedImage }, { openaiKey: customapikey }]
+    const content = [{ image1: originalImage }, { image2: editedImage }, { openaiKey: openApiKey }]
     abortControllerRef.current = new AbortController();
 
 

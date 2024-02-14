@@ -12,7 +12,7 @@ export async function POST(req, res) {
   const openai = new OpenAI({
     apiKey: openaiApiKey,
   });
-  //apiKey: "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",
+
   //const buffer1 = Buffer.from(imageData1, "base64");
   //code for buffers if necesaary in future
 
